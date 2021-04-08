@@ -1,34 +1,24 @@
 import re
 from striprtf.striprtf import rtf_to_text
 
-rtf = open("nwt_E.rtf/nwt_02_Ex_E.rtf").read()
+rtf = open("nwt_E.rtf/nwt_01_Ge_E.rtf").read()
 text = rtf_to_text(rtf)
 lines = text.split('\n')
 title = lines[0]
-subString1 = "Chapter"
-subString2 = "\t"
-testList = []
+subString = ["Chapter", "\t"]
+
+outlines = []
+testList2 = []
 
 for line in lines:
-    if line.find(subString2) == -1:
-        testList.append(line)
+    for sub in subString:
+        if line.find(sub) != -1:
+            outlines.append(line)
 
 
-def check_num_chapter():
-    num = 0
-    for e in testList:
-        if subString1 in e:
-            num = num + 1
-
-    return num
-
-
-chapterNum: int = int(check_num_chapter() / 2)
-
-testList = testList[chapterNum + 2:]
-print(testList)
-str1 = ''.join(testList)
+content = [x for x in lines if x not in outlines]
+cleanContent = content[2:]
+str1 = ''.join(cleanContent)
 
 print(str1)
-
 
