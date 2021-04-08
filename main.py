@@ -1,14 +1,12 @@
-import re
 from striprtf.striprtf import rtf_to_text
 
-rtf = open("nwt_E.rtf/nwt_01_Ge_E.rtf").read()
+rtf = open("nwt_E/nwt_02_Ex_E.rtf").read()
 text = rtf_to_text(rtf)
 lines = text.split('\n')
 title = lines[0]
 subString = ["Chapter", "\t"]
 
 outlines = []
-testList2 = []
 
 for line in lines:
     for sub in subString:
