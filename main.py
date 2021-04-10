@@ -9,7 +9,6 @@ title = lines[0]
 
 # create subString list to remove the lines contain subString
 subString = ["^Chapter", "\(\d+"]
-
 outlines = []
 
 # outlines and chapter lines into list
@@ -22,18 +21,21 @@ for line in lines:
 content = [x for x in lines if x not in outlines]
 cleanContent = content[2:]
 
-print(cleanContent)
-
 # join the whole list (remove outline, title, and chapter) into one string
 str1: str = ''.join(cleanContent)
 
+# use regex to split all scripts into a list, means each script will be an element
+scripts = re.split("\d+\xa0", str1)
 
-# to-do: use regex to split all scripts into a list, means each script(with script number) will be an element
-y = re.split("\d+\xa0", str1)
+
 i = 0
-for e in y:
+for e in scripts:
     i = i+1
     print(str(i) + e)
+
+
+
+
 
 
 
