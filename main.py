@@ -27,7 +27,6 @@ str1: str = ''.join(cleanContent)
 # use regex to split all scripts into a list, means each script will be an element
 scripts = re.split("\d+\xa0", str1)
 
-
 i = 0
 for e in scripts:
     i = i+1

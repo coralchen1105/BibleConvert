@@ -12,7 +12,8 @@
 import pandas as pd
 
 df = pd.read_csv('bibleTest.csv')
-
+df["new world translation"] = ""
+df.to_csv('bibleTest.csv', index=False)
 print(df.head())
 
 
