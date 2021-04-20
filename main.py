@@ -1,7 +1,7 @@
 import re
 from striprtf.striprtf import rtf_to_text
 # open one rtf file and read into text, split with \n into list
-rtf = open("nwt_E/nwt_01_Ge_E.rtf", encoding='UTF-8', errors='ignore').read()
+rtf = open("nwt_E/nwt_11_1Ki_E.rtf", encoding='UTF-8', errors='ignore').read()
 text = rtf_to_text(rtf)
 lines = text.split('\n')
 
@@ -26,6 +26,7 @@ str1: str = ''.join(cleanContent)
 
 # use regex to split all scripts into a list, means each script will be an element
 scripts = re.split("\d+\xa0", str1)
+scripts.pop(0)
 
 i = 0
 for e in scripts:
