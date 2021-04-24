@@ -8,7 +8,7 @@ lines = text.split('\n')
 title = lines[0]
 
 # create subString list to remove the lines contain subString
-subString = ["^Chapter", "\(\d+\-\d+\)", "\(\d+\, \d+\)"]
+subString = ["^Chapter", "\(\d+\-\d+\)", "\(\d+\, \d+\)","\(\d+\)"]
 outlines = []
 
 # outlines and chapter lines into list
