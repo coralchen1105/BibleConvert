@@ -1,14 +1,14 @@
 import re
 from striprtf.striprtf import rtf_to_text
 # open one rtf file and read into text, split with \n into list
-rtf = open("nwt_E/nwt_15_Ezr_E.rtf", encoding='ascii', errors='ignore').read()
+rtf = open("nwt_E/nwt_17_Es_E.rtf", encoding='ascii', errors='ignore').read()
 text = rtf_to_text(rtf)
 lines = text.split('\n')
 
 title = lines[0]
 
 # create subString list to remove the lines contain subString
-subString = ["^Chapter", "\(\d+\-\d+\)", "\(\d+\, \d+\)","\(\d+\)"]
+subString = ["^Chapter", "\(\d+\-\d+\)", "\(\d+\, \d+\)","\(\d+\)","\t"]
 outlines = []
 
 # outlines and chapter lines into list
