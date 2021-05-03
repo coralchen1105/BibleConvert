@@ -1,7 +1,7 @@
 import re
 from striprtf.striprtf import rtf_to_text
 # open one rtf file and read into text, split with \n into list
-rtf = open("nwt_E/nwt_17_Es_E.rtf", encoding='ascii', errors='ignore').read()
+rtf = open("nwt_E/nwt_41_Mr_E.rtf", encoding='ascii', errors='ignore').read()
 text = rtf_to_text(rtf)
 lines = text.split('\n')
 
@@ -21,7 +21,7 @@ for line in lines:
 content = [x for x in lines if x not in outlines]
 cleanContent = content[2:]
 
-print(cleanContent)
+# print(cleanContent)
 # join the whole list (remove outline, title, and chapter) into one string
 str1: str = ''.join(cleanContent)
 
