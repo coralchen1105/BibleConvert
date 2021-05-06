@@ -49,7 +49,6 @@ def process_john(file):
     scripts.pop(0)
     for index in range(336, 348):
         scripts.insert(index, "")
-        index + 1
     return scripts
 
 
@@ -76,14 +75,16 @@ John_scripts = []
 John_scripts = process_john(John_file)
 
 for s in John_scripts:
-    scriptures.append(i)
-
+    scriptures.append(s)
+# i = 1
+# for s in John_scripts:
+#     i = i + 1
+#     print(str(i) +s)
 # process data in file3 after John as the rest of files are all match
 get_all_scripts(files3)
 
 print(len(scriptures))
 
-# df = pd.read_csv('bibles.txt', delimiter="\t")
-# df["new world translation"] = ""
-# df.insert(loc=12, column="new world translation", value=scriptures)
-# df.to_csv('bibles.txt', index=False)
+df = pd.read_csv('bibles.txt', delimiter="\t")
+df["new world translation"] = scriptures
+df.to_csv('bibles.txt', index=False)
