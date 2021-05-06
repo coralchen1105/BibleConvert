@@ -6,7 +6,10 @@ from filedata import files3
 from filedata import John_file
 import pandas as pd
 
+# create empty list of scriptures, final list will include all bible scriptures without any verse and chapter
 scriptures = []
+
+# outline match patterns, used for get rid of outlines
 subString = ["^Chapter", "\(\d+\-\d+\)", "\(\d+\, \d+\)", "\(\d+\)", "\t"]
 
 
@@ -42,6 +45,12 @@ def process(file) -> object:
         scriptures.append(s)
 
 
+def get_all_scripts(files):
+    for file in files:
+        process(file)
+
+
+# process John file, add 12 null data from index 336 to 347
 def process_john(file):
     lines = open_file(file)
     cleanContent = clean_up(lines)
@@ -51,10 +60,6 @@ def process_john(file):
         scripts.insert(index, "")
     return scripts
 
-
-def get_all_scripts(files):
-    for file in files:
-        process(file)
 
 # all rtf files before Mark
 get_all_scripts(files1)
@@ -76,15 +81,15 @@ John_scripts = process_john(John_file)
 
 for s in John_scripts:
     scriptures.append(s)
-# i = 1
-# for s in John_scripts:
-#     i = i + 1
-#     print(str(i) +s)
+
 # process data in file3 after John as the rest of files are all match
 get_all_scripts(files3)
 
-print(len(scriptures))
+# print(len(scriptures))
 
+# use Panda lib to read bibles.txt file
+# df (dataFrame) create new col named "new world translation" and add list of scriptures to each row
+# write df (dataFrame) with new column and data into bibles.txt
 df = pd.read_csv('bibles.txt', delimiter="\t")
 df["new world translation"] = scriptures
 df.to_csv('bibles.txt', index=False)
